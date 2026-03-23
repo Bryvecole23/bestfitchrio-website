@@ -1,4 +1,4 @@
-// BestFit Chiropractic - Complete JavaScript Functionality with EmailJS
+// BestFit Chiropractic - Complete JavaScript Functionality with Jane App redirect handled by HTML form action
 document.addEventListener('DOMContentLoaded', function() {
     
     // Hamburger menu functionality - FIXED for mobile interaction
@@ -7,16 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event bubbling
+            e.stopPropagation();
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
             
-            // Update ARIA attributes for accessibility
             const isExpanded = hamburger.classList.contains('active');
             hamburger.setAttribute('aria-expanded', isExpanded);
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 hamburger.classList.remove('active');
@@ -46,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentSection = '';
         
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100; // Account for fixed navbar
+            const sectionTop = section.offsetTop - 100;
             const sectionHeight = section.offsetHeight;
             
             if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
@@ -64,45 +62,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // FIXED: Floating label functionality for booking form - properly handles label positioning
+    // Floating label functionality
     const inputs = document.querySelectorAll('.floating-field input[type="text"], .floating-field input[type="email"], .floating-field input[type="tel"], .floating-field textarea');
     
     inputs.forEach(input => {
-        // Check if input has value on page load (for browser auto-fill)
         checkInputValue(input);
         
-        // Handle typing in input fields
         input.addEventListener('input', function() {
             checkInputValue(this);
         });
         
-        // Handle focus (when user clicks into field)
         input.addEventListener('focus', function() {
             this.classList.add('focused');
-            // Ensure label stays up if there's content
             checkInputValue(this);
         });
         
-        // Handle blur (when user clicks away from field)
         input.addEventListener('blur', function() {
             this.classList.remove('focused');
             checkInputValue(this);
         });
 
-        // Handle browser auto-fill detection
         input.addEventListener('animationstart', function(e) {
             if (e.animationName === 'onAutoFillStart') {
                 this.classList.add('has-value');
             }
         });
         
-        // Check on change as well (for programmatic changes)
         input.addEventListener('change', function() {
             checkInputValue(this);
         });
     });
     
-    // Function to check and update input value state
     function checkInputValue(input) {
         if (input.value && input.value.trim() !== '') {
             input.classList.add('has-value');
@@ -111,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Check all inputs on page load (for browser autofill)
     setTimeout(() => {
         inputs.forEach(input => {
             checkInputValue(input);
@@ -123,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            // Handle internal links only
             if (href.startsWith('#')) {
                 e.preventDefault();
                 
@@ -131,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const targetSection = document.getElementById(targetId);
                 
                 if (targetSection) {
-                    // Calculate position accounting for fixed navbar
-                    const navHeight = document.querySelector('.navbar').offsetHeight;
+                    const navbar = document.querySelector('.navbar');
+                    const navHeight = navbar ? navbar.offsetHeight : 0;
                     const offsetTop = targetSection.offsetTop - navHeight;
                     
                     window.scrollTo({
@@ -157,128 +145,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Form submission handling - Updated for EmailJS
+    // Optional: change button text while form submits normally to Jane
     const bookingForm = document.querySelector('#contact-form');
-    const formStatus = document.querySelector('#form-status');
     const submitButton = document.querySelector('#submit-button');
-    
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Always prevent default for EmailJS
-            
-            // Clear any previous status messages
-            if (formStatus) {
-                formStatus.style.display = 'none';
-            }
-            
-            // Disable submit button during processing
-            if (submitButton) {
-                submitButton.disabled = true;
-                submitButton.textContent = 'Sending...';
-            }
-            
-            // Get form data
-            const formData = new FormData(this);
-            const firstName = formData.get('firstName');
-            const lastName = formData.get('lastName');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const message = formData.get('message') || 'No additional message provided';
-            
-            // Get checked body areas
-            const bodyAreas = [];
-            const checkboxes = document.querySelectorAll('input[name="bodyAreas"]:checked');
-            checkboxes.forEach(checkbox => {
-                bodyAreas.push(checkbox.value);
-            });
-            const areasText = bodyAreas.length > 0 ? bodyAreas.join(', ') : 'None specified';
-            
-            // Basic validation
-            if (!firstName || !lastName || !email || !phone) {
-                showFormStatus('Please fill in all required fields.', 'error');
-                resetSubmitButton();
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showFormStatus('Please enter a valid email address.', 'error');
-                resetSubmitButton();
-                return;
-            }
-            
-            // Phone validation (basic)
-            const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-            if (!phoneRegex.test(phone)) {
-                showFormStatus('Please enter a valid phone number.', 'error');
-                resetSubmitButton();
-                return;
-            }
-            
-            // Prepare template parameters for EmailJS
-            const templateParams = {
-                from_name: `${firstName} ${lastName}`,
-                from_email: email,
-                phone: phone,
-                body_areas: areasText,
-                message: message,
-            };
-            
-            // Send email using EmailJS - REPLACE THESE WITH YOUR ACTUAL VALUES
-            emailjs.send('service_0w0t42h', 'template_zk62v45', templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    showFormStatus('Thank you! Your appointment request has been sent successfully.', 'success');
-                    
-                    // Reset form
-                    bookingForm.reset();
-                    inputs.forEach(input => {
-                        input.classList.remove('has-value', 'focused');
-                    });
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        if (formStatus) {
-                            formStatus.style.display = 'none';
-                        }
-                    }, 5000);
-                })
-                .catch(function(error) {
-                    console.log('FAILED...', error);
-                    showFormStatus('Sorry, there was an error sending your message. Please try again or call us directly.', 'error');
-                })
-                .finally(function() {
-                    resetSubmitButton();
-                });
+
+    if (bookingForm && submitButton) {
+        bookingForm.addEventListener('submit', function() {
+            submitButton.disabled = true;
+            submitButton.value = 'Opening Booking...';
         });
     }
-    
-    // Helper function to reset submit button
-    function resetSubmitButton() {
-        if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = 'Send Request';
-        }
-    }
-    
-    // Function to show form status messages
-    function showFormStatus(message, type) {
-        if (formStatus) {
-            formStatus.textContent = message;
-            formStatus.className = `form-status ${type}`;
-            formStatus.style.display = 'block';
-            
-            // Auto-hide error messages after 5 seconds
-            if (type === 'error') {
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 5000);
-            }
-        }
-    }
 
-    // Add CSS for auto-fill detection - Updated to work better with floating labels
+    // Auto-fill detection support
     const style = document.createElement('style');
     style.textContent = `
         @keyframes onAutoFillStart {
@@ -292,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
             animation-duration: 0.001s;
         }
         
-        /* Ensure autofilled inputs trigger the label to float */
         input:-webkit-autofill + label,
         textarea:-webkit-autofill + label,
         input.has-value + label,
@@ -307,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
             box-shadow: 0 2px 8px rgba(235, 37, 38, 0.3) !important;
         }
         
-        /* Prevent text input from being hidden under floating label */
         .floating-field input.has-value,
         .floating-field textarea.has-value,
         .floating-field input:-webkit-autofill,
@@ -316,19 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(style);
-    
-    // Mobile touch improvements
-    if ('ontouchstart' in window) {
-        document.body.classList.add('touch-device');
-        
-        // Improve touch responsiveness for hamburger menu
-        if (hamburger) {
-            hamburger.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                this.click();
-            });
-        }
-    }
 
-    console.log('BestFit Chiropractic JavaScript with EmailJS loaded successfully!');
+    console.log('BestFit Chiropractic JavaScript loaded successfully!');
 });

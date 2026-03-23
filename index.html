@@ -103,7 +103,7 @@
                         care tailored to your lifestyle. Whether you're recovering from injury, struggling from back or neck pain, 
                         or just need to de-stress from your desk job, our holistic approach is designed to get you moving and feeling better.</p>
                     </div>
-                    <a href="#booking" class="btn-secondary" role="button" aria-label="Schedule your consultation call">Schedule Your Call</a>
+                    <a href="#booking" class="btn-secondary" role="button" aria-label="Schedule your consultation call">Schedule Your Appointment</a>
                 </div>
             </section>
 
@@ -199,12 +199,16 @@
             <section id="booking" class="booking" role="region" aria-labelledby="booking-title">
                 <div class="booking-container">
                     <header class="booking-header">
-                        <h2 id="booking-title">Book Your Call Today</h2>
+                        <h2 id="booking-title">Book Your Appointment Today</h2>
                     </header>
                     <div class="booking-form">
                         <div class="booking-content">
-                            <!-- Updated contact form for EmailJS - removed mailto action -->
-                            <form id="contact-form" role="form" aria-labelledby="booking-title" aria-describedby="form-description">
+                            <form id="contact-form"
+                                  action="https://bestfitchiropractic.janeapp.com"
+                                  method="get"
+                                  role="form"
+                                  aria-labelledby="booking-title"
+                                  aria-describedby="form-description">
                                 
                                 <p id="form-description" class="sr-only">Fill out this form to schedule your consultation call with BestFit Chiropractic. All fields marked with asterisk are required.</p>
                                 
@@ -291,11 +295,13 @@
                                     </div>
                                 </fieldset>
                                 
+                                <p class="booking-note">Complete this form and you’ll be taken to our online booking page to choose your appointment time.</p>
+                                
                                 <!-- Form Status Messages with ARIA live region -->
                                 <div id="form-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
         
-                                <input type="submit" value="Send Request" id="submit-button" aria-describedby="submit-help">
-                                <div id="submit-help" class="sr-only">This will send your information directly to BestFit Chiropractic</div>
+                                <input type="submit" value="Continue to Booking" id="submit-button" aria-describedby="submit-help">
+                                <div id="submit-help" class="sr-only">This will take you to the Jane App booking page after you complete the form</div>
                             </form>
                         </div>
                     </div>
@@ -342,16 +348,6 @@
                 <p>&copy; 2025 BestFit Chiropractic. All rights reserved.</p>
             </div>
         </footer>
-
-        <!-- EmailJS Scripts - Add these BEFORE your script.js -->
-        <script type="text/javascript" 
-                src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-        </script>
-        <script type="text/javascript">
-            (function(){
-                emailjs.init("UaHzD-egD79L6fdg4"); // Replace with your actual public key from EmailJS
-            })();
-        </script>
 
         <!-- Your JavaScript file -->
         <script src="script.js"></script>
