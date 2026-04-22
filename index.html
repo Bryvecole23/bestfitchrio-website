@@ -2,29 +2,20 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <!--Enables responsive design on phones-->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>BestFit Chiropractic - Expert Chiropractic Care Available 7 Days a Week</title>
-        <!--Short summary used by search engines for the snippet-->
         <meta name="description" content="BestFit Chiropractic provides expert chiropractic care, posture analysis, therapeutic massage, and pain relief treatments. Available 7 days a week in your area." />
-        <!--Sets the browser UI color on mobile (address bar, etc.)-->
         <meta name="theme-color" content="#EB2526" />
-        
-        <!-- Link to CSS file -->
         <link rel="stylesheet" href="styles.css">
-        
-        <!-- Google Fonts for Apple-like typography -->
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <!-- Skip to main content link for screen readers -->
         <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
-        
+
         <header role="banner">
             <nav class="navbar" role="navigation" aria-label="Main navigation">
                 <div class="nav-container">
-                    <!-- Logo with proper ARIA labeling -->
                     <a href="#home" class="nav-logo with-image" aria-label="BestFit Chiropractic — Go to homepage">
                         <img
                           class="nav-logo-img"
@@ -35,16 +26,12 @@
                           onerror="this.onerror=null; this.src='../images/best-fit-logo.png';"
                         />
                     </a>
-                    
-                    <!-- Navigation menu with proper ARIA -->
                     <ul class="nav-menu" role="menubar" aria-label="Main menu">
                         <li role="none"><a href="#home" role="menuitem" aria-current="page">Home</a></li>
                         <li role="none"><a href="#about" role="menuitem">About</a></li>
                         <li role="none"><a href="#our-services" role="menuitem">Our Services</a></li>
                         <li role="none"><a href="#booking" role="menuitem">Contact</a></li>
                     </ul>
-                    
-                    <!-- Hamburger menu with enhanced ARIA -->
                     <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu" type="button">
                         <span class="bar" aria-hidden="true"></span>
                         <span class="bar" aria-hidden="true"></span>
@@ -54,34 +41,40 @@
             </nav>
         </header>
 
-        <!-- Main content wrapper -->
         <main id="main-content" role="main">
-            <!--Hero Section-->
+
+            <!-- Hero / Grand Opening Section -->
             <section id="home" class="hero" role="banner" aria-labelledby="hero-title">
+                <canvas class="grand-opening-canvas"></canvas>
                 <div class="hero-content">
-                    <h3 class="hero-mini-title">Available 7 days a week</h3>
-                    <h1 id="hero-title" class="hero-title">BestFit Chiropractic</h1>
+                    <div class="grand-opening-eyebrow">
+                        <span class="grand-opening-rule"></span>
+                        <span class="grand-opening-tag">Now Open</span>
+                        <span class="grand-opening-rule"></span>
+                    </div>
+                    <h1 id="hero-title" class="grand-opening-title">Grand Opening</h1>
+                    <p class="grand-opening-subtitle">BestFit Chiropractic</p>
+                    <div class="grand-opening-divider">
+                        <span class="grand-opening-diamond"></span>
+                    </div>
+                    <p class="grand-opening-text">
+                        Expert chiropractic care is now available in your area — 7 days a week.
+                    </p>
+                    <address class="grand-opening-address">
+                        3450 Northlake Blvd, Suite 149, Palm Beach Gardens, FL 33403
+                    </address>
                     <div class="hero-button">
-                        <a href="#our-services" class="btn-primary" role="button" aria-describedby="hero-title">Explore More</a>
+                        <a href="#our-services" class="btn-primary" role="button">Explore More</a>
                     </div>
                 </div>
-                <div class="hero-picture" role="img" aria-label="Professional chiropractic treatment table in modern clinic">
-                    <img 
-                      class="hero-img"
-                      src="images/chiro-table-hero.png"
-                      alt="Modern chiropractic treatment table in a clean, professional clinic setting"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                </div>
             </section>
-            
+
             <!-- About Section -->
             <section id="about" class="about" role="region" aria-labelledby="about-title">
                 <div class="about-picture" role="img" aria-label="Professional chiropractic clinic interior">
                     <img
                       class="about-img"
-                      src="./images/chiro-table-about.png" 
+                      src="./images/chiro-table-about.png"
                       alt="Clean, modern chiropractic clinic interior with treatment equipment"
                       loading="lazy"
                       decoding="async"
@@ -92,33 +85,29 @@
                     <div class="about-headshot">
                         <img
                           class="headshot-img"
-                          src="./images/doctor-headshot.jpeg" 
+                          src="./images/doctor-headshot.jpeg"
                           alt="Dr. Brandon Alexander, Licensed Chiropractor at BestFit Chiropractic"
                           loading="lazy"
                           decoding="async"
                         />
                     </div>
                     <div class="about-content">
-                        <p>At Best Fit Chiropractic, we help you realign your health with expert chiropractic 
-                        care tailored to your lifestyle. Whether you're recovering from injury, struggling from back or neck pain, 
+                        <p>At Best Fit Chiropractic, we help you realign your health with expert chiropractic
+                        care tailored to your lifestyle. Whether you're recovering from injury, struggling from back or neck pain,
                         or just need to de-stress from your desk job, our holistic approach is designed to get you moving and feeling better.</p>
                     </div>
                     <a href="#booking" class="btn-secondary" role="button" aria-label="Schedule your consultation call">Schedule Your Appointment</a>
                 </div>
             </section>
 
-            <!--Our Services-->
+            <!-- Our Services -->
             <section id="our-services" class="our-services" role="region" aria-labelledby="services-title">
                 <div class="our-services-container">
                     <h2 id="services-title" class="our-services-title">Our Services</h2>
                 </div>
                 <div class="services" role="grid" aria-label="Available chiropractic services" aria-describedby="services-title">
-                    <!-- TOP ROW - SERVICES 1-3 -->
-                    <!-- SERVICE 1 - Chiropractic Adjustments -->
                     <article class="service-1-container" role="gridcell" aria-labelledby="service-1-title">
-                        <div class="service-1-logo" role="img" aria-label="Chiropractic adjustments icon">
-                            <!--Chiropractic Adjustments Icon - CSS generated-->
-                        </div>
+                        <div class="service-1-logo" role="img" aria-label="Chiropractic adjustments icon"></div>
                     </article>
                     <header class="service-1-heading" role="gridcell">
                         <h3 id="service-1-title" class="service-1-title">Chiropractic Adjustments</h3>
@@ -127,11 +116,8 @@
                         <p>Gentle, precise spinal adjustments to support healthy alignment, mobility, and everyday comfort.</p>
                     </div>
 
-                    <!-- SERVICE 2 - Posture Analysis -->
                     <article class="service-2-container" role="gridcell" aria-labelledby="service-2-title">
-                        <div class="service-2-logo" role="img" aria-label="Posture analysis icon">
-                            <!--Posture Analysis Icon - CSS generated-->
-                        </div>
+                        <div class="service-2-logo" role="img" aria-label="Posture analysis icon"></div>
                     </article>
                     <header class="service-2-heading" role="gridcell">
                         <h3 id="service-2-title" class="service-2-title">Posture Analysis</h3>
@@ -140,11 +126,8 @@
                         <p>One-on-one assessment with a simple, customized plan—ergonomics, stretches, and strength work for a healthier spine.</p>
                     </div>
 
-                    <!-- SERVICE 3 - Therapeutic Massage -->
                     <article class="service-3-container" role="gridcell" aria-labelledby="service-3-title">
-                        <div class="service-3-logo" role="img" aria-label="Therapeutic massage icon">
-                            <!--Therapeutic Massage Icon - CSS generated-->
-                        </div>
+                        <div class="service-3-logo" role="img" aria-label="Therapeutic massage icon"></div>
                     </article>
                     <header class="service-3-heading" role="gridcell">
                         <h3 id="service-3-title" class="service-3-title">Therapeutic Massage</h3>
@@ -153,12 +136,8 @@
                         <p>Targeted massage to ease muscle tension and help your body move and recover better.</p>
                     </div>
 
-                    <!-- BOTTOM ROW - SERVICES 4-6 -->
-                    <!-- SERVICE 4 - Cupping -->
                     <article class="service-4-container" role="gridcell" aria-labelledby="service-4-title">
-                        <div class="service-4-logo" role="img" aria-label="Cupping therapy icon">
-                            <!--Cupping Icon - CSS generated-->
-                        </div>
+                        <div class="service-4-logo" role="img" aria-label="Cupping therapy icon"></div>
                     </article>
                     <header class="service-4-heading" role="gridcell">
                         <h3 id="service-4-title" class="service-4-title">Cupping</h3>
@@ -167,11 +146,8 @@
                         <p>Traditional cupping therapy to improve circulation, reduce muscle tension, and promote natural healing.</p>
                     </div>
 
-                    <!-- SERVICE 5 - Dry Needling -->
                     <article class="service-5-container" role="gridcell" aria-labelledby="service-5-title">
-                        <div class="service-5-logo" role="img" aria-label="Dry needling therapy icon">
-                            <!--Dry Needling Icon - CSS generated-->
-                        </div>
+                        <div class="service-5-logo" role="img" aria-label="Dry needling therapy icon"></div>
                     </article>
                     <header class="service-5-heading" role="gridcell">
                         <h3 id="service-5-title" class="service-5-title">Dry Needling</h3>
@@ -180,11 +156,8 @@
                         <p>Precise needle technique to release trigger points, reduce pain, and restore muscle function.</p>
                     </div>
 
-                    <!-- SERVICE 6 - Mobilization Exercises -->
                     <article class="service-6-container" role="gridcell" aria-labelledby="service-6-title">
-                        <div class="service-6-logo" role="img" aria-label="Mobilization exercises icon">
-                            <!--Mobilization Exercises Icon - CSS generated-->
-                        </div>
+                        <div class="service-6-logo" role="img" aria-label="Mobilization exercises icon"></div>
                     </article>
                     <header class="service-6-heading" role="gridcell">
                         <h3 id="service-6-title" class="service-6-title">Mobilization Exercises</h3>
@@ -194,8 +167,8 @@
                     </div>
                 </div>
             </section>
-            
-            <!--Schedule Call Section-->
+
+            <!-- Booking Section -->
             <section id="booking" class="booking" role="region" aria-labelledby="booking-title">
                 <div class="booking-container">
                     <header class="booking-header">
@@ -209,70 +182,34 @@
                                   role="form"
                                   aria-labelledby="booking-title"
                                   aria-describedby="form-description">
-                                
                                 <p id="form-description" class="sr-only">Fill out this form to schedule your consultation call with BestFit Chiropractic. All fields marked with asterisk are required.</p>
-                                
                                 <div class="floating-field">
-                                    <input type="text" 
-                                           id="firstName" 
-                                           name="firstName" 
-                                           placeholder=" " 
-                                           required 
-                                           aria-required="true"
-                                           aria-describedby="firstName-error">
+                                    <input type="text" id="firstName" name="firstName" placeholder=" " required aria-required="true" aria-describedby="firstName-error">
                                     <label for="firstName">First Name *</label>
                                     <div id="firstName-error" class="error-message" role="alert" aria-live="polite"></div>
                                 </div>
-        
                                 <div class="floating-field">
-                                    <input type="text" 
-                                           id="lastName" 
-                                           name="lastName" 
-                                           placeholder=" " 
-                                           required 
-                                           aria-required="true"
-                                           aria-describedby="lastName-error">
+                                    <input type="text" id="lastName" name="lastName" placeholder=" " required aria-required="true" aria-describedby="lastName-error">
                                     <label for="lastName">Last Name *</label>
                                     <div id="lastName-error" class="error-message" role="alert" aria-live="polite"></div>
                                 </div>
-        
                                 <div class="floating-field">
-                                    <input type="email" 
-                                           id="email" 
-                                           name="email" 
-                                           placeholder=" " 
-                                           required 
-                                           aria-required="true"
-                                           aria-describedby="email-error email-help">
+                                    <input type="email" id="email" name="email" placeholder=" " required aria-required="true" aria-describedby="email-error email-help">
                                     <label for="email">Email Address *</label>
                                     <div id="email-help" class="sr-only">We'll use this to send you appointment confirmations</div>
                                     <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
                                 </div>
-        
                                 <div class="floating-field">
-                                    <input type="tel" 
-                                           id="phone" 
-                                           name="phone" 
-                                           placeholder=" " 
-                                           required 
-                                           aria-required="true"
-                                           aria-describedby="phone-error phone-help">
+                                    <input type="tel" id="phone" name="phone" placeholder=" " required aria-required="true" aria-describedby="phone-error phone-help">
                                     <label for="phone">Phone Number *</label>
                                     <div id="phone-help" class="sr-only">Include area code. We'll use this to call you back</div>
                                     <div id="phone-error" class="error-message" role="alert" aria-live="polite"></div>
                                 </div>
-
                                 <div class="floating-field floating-field-textarea">
-                                    <textarea id="message" 
-                                              name="message" 
-                                              placeholder=" " 
-                                              rows="4"
-                                              aria-describedby="message-help"></textarea>
+                                    <textarea id="message" name="message" placeholder=" " rows="4" aria-describedby="message-help"></textarea>
                                     <label for="message">Brief Description of Your Needs (Optional)</label>
                                     <div id="message-help" class="sr-only">Tell us about your pain, symptoms, or health goals</div>
                                 </div>
-
-                                <!-- Body Area Checkboxes -->
                                 <fieldset class="checkbox-fieldset">
                                     <legend>Areas of Concern (Select all that apply)</legend>
                                     <div class="checkbox-grid">
@@ -294,12 +231,8 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                
-                                <p class="booking-note">Complete this form and you’ll be taken to our online booking page to choose your appointment time.</p>
-                                
-                                <!-- Form Status Messages with ARIA live region -->
+                                <p class="booking-note">Complete this form and you'll be taken to our online booking page to choose your appointment time.</p>
                                 <div id="form-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
-        
                                 <input type="submit" value="Continue to Booking" id="submit-button" aria-describedby="submit-help">
                                 <div id="submit-help" class="sr-only">This will take you to the Jane App booking page after you complete the form</div>
                             </form>
@@ -308,10 +241,10 @@
                 </div>
             </section>
 
-            <!--Client Testimonials Section-->
+            <!-- Testimonials -->
             <section id="testimonials" class="testimonials" role="region" aria-labelledby="testimonials-title">
                 <header class="testimonial-container">
-                    <h2 id="testimonials-title" class="testimonial-title">Client Testimonials</h2>  
+                    <h2 id="testimonials-title" class="testimonial-title">Client Testimonials</h2>
                 </header>
                 <div class="testimonial-grid" role="list" aria-label="Customer testimonials">
                     <article class="testimonial-item" role="listitem">
@@ -332,7 +265,7 @@
                     </article>
                     <article class="testimonial-item" role="listitem">
                         <blockquote>
-                            <h3 class="testimonial-3-name">LeJohn Thomas</h3>   
+                            <h3 class="testimonial-3-name">LeJohn Thomas</h3>
                             <div class="testimonial-3-content">
                                 <p>"Professional, caring, and effective. BestFit Chiropractic helped me recover from a sports injury faster than I thought possible. Their holistic approach makes all the difference."</p>
                             </div>
@@ -342,14 +275,12 @@
             </section>
         </main>
 
-        <!--Footer-->
         <footer class="footer" role="contentinfo">
             <div class="footer-container">
                 <p>&copy; 2025 BestFit Chiropractic. All rights reserved.</p>
             </div>
         </footer>
 
-        <!-- Your JavaScript file -->
         <script src="script.js"></script>
     </body>
 </html>
